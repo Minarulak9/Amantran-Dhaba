@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amantran Dhaba – Authentic Bengali Thali & North Indian Cuisine</title>
+  <meta name="description" content="Amantran Dhaba – Exquisite Bengali Thali & North Indian food at Moinagadi, Barasat. Dine in, outdoor seating, roadside collection. Call: 09830365136">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+
+  <link rel="stylesheet" href="./css/style.css"/>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ PRELOADER ═══════════════════════════════ -->
+<div id="preloader">
+  <div class="pre-bg"></div>
+  <div class="pre-content">
+    <div class="pre-logo-wrap">
+      <div class="pre-ring pre-ring--1"></div>
+      <div class="pre-ring pre-ring--2"></div>
+      <img src="./img/logo.jpg" alt="Amantran Dhaba" class="pre-logo">
+    </div>
+    <div class="pre-text">
+      <span class="pre-bengali">আমন্ত্রণ</span>
+      <span class="pre-sub">Dhaba</span>
+    </div>
+    <div class="pre-line-wrap"><div class="pre-line"></div></div>
+    <p class="pre-tagline">An Invitation to Flavour</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-container">
+    <a href="#" class="nav-logo">
+      <img src="./img/logo.jpg" alt="Amantran" class="nav-logo-img">
+      <span class="nav-logo-text">Amantran <em>Dhaba</em></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero" class="nav-link" data-close>Home</a></li>
+      <li><a href="#about" class="nav-link" data-close>About</a></li>
+      <li><a href="#menu" class="nav-link" data-close>Menu</a></li>
+      <li><a href="#reviews" class="nav-link" data-close>Reviews</a></li>
+      <li><a href="#contact" class="nav-link" data-close>Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="tel:09830365136" class="btn-call-nav">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.13a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .4h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Call Now
+      </a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-grain"></div>
+    <!-- Decorative floating elements -->
+    <div class="hero-deco hero-deco--1"></div>
+    <div class="hero-deco hero-deco--2"></div>
+    <div class="hero-deco hero-deco--3"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-line"></span>
+      <span>Moinagadi, Barasat</span>
+      <span class="eyebrow-line"></span>
+    </div>
+    <h1 class="hero-title">
+      <span class="hero-bengali">আমন্ত্রণ</span>
+      <span class="hero-sub-title">Dhaba</span>
+    </h1>
+    <p class="hero-desc">Exquisite Bengali Thali & North Indian Cuisine<br>crafted with care, served with soul.</p>
+    <div class="hero-badges">
+      <span class="badge">⭐ 4.1 · 2K Reviews</span>
+      <span class="badge">₹200–400 per person</span>
+      <span class="badge">Open till 11:55 PM</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#menu" class="btn-primary">Explore Menu</a>
+      <a href="#contact" class="btn-outline">Book a Table</a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <span>Scroll to explore</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ QUICK ACTIONS ═══════════════════════════════ -->
+<section class="quick-actions">
+  <div class="qa-container">
+    <a href="tel:09830365136" class="qa-card qa-card--call">
+      <div class="qa-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.13a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .4h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      </div>
+      <div class="qa-text"><strong>Call Now</strong><span>09830365136</span></div>
+    </a>
+    <a href="https://wa.me/919830365136?text=Hi%2C%20I%20want%20to%20book%20a%20table%20at%20Amantran%20Dhaba" target="_blank" class="qa-card qa-card--wa">
+      <div class="qa-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+      </div>
+      <div class="qa-text"><strong>WhatsApp</strong><span>Message Us</span></div>
+    </a>
+    <a href="https://maps.google.com/?q=Amantran+Dhaba+Moinagadi+Barasat" target="_blank" class="qa-card qa-card--map">
+      <div class="qa-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="qa-text"><strong>Directions</strong><span>Moinagadi, Barasat</span></div>
+    </a>
+    <a href="#contact" class="qa-card qa-card--book">
+      <div class="qa-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div class="qa-text"><strong>Book a Table</strong><span>Reserve your spot</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ ABOUT ═══════════════════════════════ -->
+<section id="about" class="about-section">
+  <div class="about-container">
+    <div class="about-visual" data-reveal>
+      <div class="about-img-frame">
+        <div class="about-img-inner">
+          <div class="about-img-placeholder">
+            <div class="about-img-decor">
+              <span class="abt-bengali-bg">আমন্ত্রণ</span>
+              <div class="abt-dish-icon">🍛</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-img-badge">
+          <span class="badge-num">4.1</span>
+          <span class="badge-star">★</span>
+          <span class="badge-label">Google Rating</span>
+        </div>
+      </div>
+      <div class="about-floating-card">
+        <span class="fc-emoji">🍽️</span>
+        <div class="fc-text">
+          <strong>All You Can Eat</strong>
+          <span>Bengali Thali</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-text" data-reveal>
+      <div class="section-label">Our Story</div>
+      <h2 class="section-heading">A Taste of Bengal,<br><em>with Open Arms</em></h2>
+      <p class="about-body">At Amantran Dhaba, every meal is an invitation — <em>আমন্ত্রণ</em> means exactly that. We prepare exquisite Bengali Thalis and rich North Indian dishes with special care, without compromising on taste or quality.</p>
+      <p class="about-body">Located at Moinagadi, Barasat, our roadside dhaba brings the soul of Bengali home cooking to every plate, with the warmth of outdoor seating and the joy of a shared table.</p>
+      <div class="about-stats">
+        <div class="stat-item">
+          <span class="stat-num">2K+</span>
+          <span class="stat-label">Happy Reviews</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">₹200</span>
+          <span class="stat-label">Starting Price</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">11:55</span>
+          <span class="stat-label">Open Until PM</span>
+        </div>
+      </div>
+      <div class="about-features">
+        <span class="feat-tag">🍽 Dine In</span>
+        <span class="feat-tag">🌿 Outdoor Seating</span>
+        <span class="feat-tag">🛵 Roadside Collection</span>
+        <span class="feat-tag">🌾 All You Can Eat</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ MENU ═══════════════════════════════ -->
+<section id="menu" class="menu-section">
+  <div class="menu-bg-text">MENU</div>
+  <div class="menu-container">
+    <div class="section-label center">Our Menu</div>
+    <h2 class="section-heading center">Flavours That<br><em>Tell a Story</em></h2>
+    <div class="menu-tabs" id="menuTabs">
+      <button class="menu-tab active" data-cat="all">All</button>
+      <button class="menu-tab" data-cat="starter">Starters</button>
+      <button class="menu-tab" data-cat="main">Main Course</button>
+      <button class="menu-tab" data-cat="rice">Rice & Biryani</button>
+      <button class="menu-tab" data-cat="bread">Roti & Nan</button>
+    </div>
+    <div class="menu-grid" id="menuGrid">
+      <!-- Starters -->
+      <div class="menu-card" data-cat="starter">
+        <div class="mc-cat">Veg Starter</div>
+        <div class="mc-name">Paneer Pakora <span class="mc-qty">(6 Pc)</span></div>
+        <div class="mc-price">₹190</div>
+      </div>
+      <div class="menu-card" data-cat="starter">
+        <div class="mc-cat">Veg Starter</div>
+        <div class="mc-name">Chilly Mushroom Dry</div>
+        <div class="mc-price">₹220</div>
+      </div>
+      <div class="menu-card" data-cat="starter">
+        <div class="mc-cat">Non-Veg Starter</div>
+        <div class="mc-name">Chilly Garlic Chicken <span class="mc-qty">(Dry)</span></div>
+        <div class="mc-price">₹240</div>
+      </div>
+      <div class="menu-card" data-cat="starter">
+        <div class="mc-cat">Non-Veg Starter</div>
+        <div class="mc-name">Chicken Lollipop <span class="mc-qty">(6 Pc)</span></div>
+        <div class="mc-price">₹180</div>
+      </div>
+      <div class="menu-card" data-cat="starter">
+        <div class="mc-cat">Non-Veg Starter</div>
+        <div class="mc-name">Drums of Heaven <span class="mc-qty">(6 Pc)</span></div>
+        <div class="mc-price">₹220</div>
+      </div>
+      <div class="menu-card" data-cat="starter">
+        <div class="mc-cat">Non-Veg Starter</div>
+        <div class="mc-name">Fish Finger <span class="mc-qty">(6 Pc)</span></div>
+        <div class="mc-price">₹300</div>
+      </div>
+      <!-- Main Course -->
+      <div class="menu-card featured" data-cat="main">
+        <div class="mc-cat">Tandoor / Kabab</div>
+        <div class="mc-name">Chicken Tikka Kabab <span class="mc-qty">(6 Pc)</span></div>
+        <div class="mc-price">₹220</div>
+      </div>
+      <div class="menu-card" data-cat="main">
+        <div class="mc-cat">Tandoor / Kabab</div>
+        <div class="mc-name">Fish Tikka Kabab <span class="mc-qty">(6)</span></div>
+        <div class="mc-price">₹380</div>
+      </div>
+      <div class="menu-card featured" data-cat="main">
+        <div class="mc-cat">Chinese Gravy</div>
+        <div class="mc-name">Chilly Paneer <span class="mc-qty">(6 Pc)</span></div>
+        <div class="mc-price">₹200</div>
+      </div>
+      <div class="menu-card" data-cat="main">
+        <div class="mc-cat">Chinese Gravy</div>
+        <div class="mc-name">Chilly Chicken <span class="mc-qty">(6 Pc)</span></div>
+        <div class="mc-price">₹170</div>
+      </div>
+      <div class="menu-card" data-cat="main">
+        <div class="mc-cat">Chinese Gravy</div>
+        <div class="mc-name">Fish Manchurian Gravy <span class="mc-qty">(6 Pc)</span></div>
+        <div class="mc-price">₹270</div>
+      </div>
+      <div class="menu-card" data-cat="main">
+        <div class="mc-cat">Noodles</div>
+        <div class="mc-name">Egg Sezwan Noodles</div>
+        <div class="mc-price">₹180</div>
+      </div>
+      <!-- Rice & Biryani -->
+      <div class="menu-card featured" data-cat="rice">
+        <div class="mc-cat">Biryani</div>
+        <div class="mc-name">Chicken Biryani <span class="mc-qty">(Full · 2 Pc)</span></div>
+        <div class="mc-price">₹220</div>
+      </div>
+      <div class="menu-card" data-cat="rice">
+        <div class="mc-cat">Biryani</div>
+        <div class="mc-name">Mutton Biryani <span class="mc-qty">(Full · 1 Pc)</span></div>
+        <div class="mc-price">₹320</div>
+      </div>
+      <div class="menu-card" data-cat="rice">
+        <div class="mc-cat">Pulao / Fried Rice</div>
+        <div class="mc-name">Kashmiri Pulao</div>
+        <div class="mc-price">₹220</div>
+      </div>
+      <div class="menu-card" data-cat="rice">
+        <div class="mc-cat">Fried Rice</div>
+        <div class="mc-name">Egg Sezwan Chicken Fried Rice</div>
+        <div class="mc-price">₹200</div>
+      </div>
+      <!-- Bread -->
+      <div class="menu-card" data-cat="bread">
+        <div class="mc-cat">Roti / Nan</div>
+        <div class="mc-name">Tandoori Roti</div>
+        <div class="mc-price">₹20</div>
+      </div>
+      <div class="menu-card" data-cat="bread">
+        <div class="mc-cat">Roti / Nan</div>
+        <div class="mc-name">Garlic Nan</div>
+        <div class="mc-price">₹80</div>
+      </div>
+      <div class="menu-card" data-cat="bread">
+        <div class="mc-cat">Roti / Nan</div>
+        <div class="mc-name">Cheese Nan</div>
+        <div class="mc-price">₹90</div>
+      </div>
+      <div class="menu-card" data-cat="bread">
+        <div class="mc-cat">Roti / Nan</div>
+        <div class="mc-name">Laccha Paratha</div>
+        <div class="mc-price">₹25</div>
+      </div>
+    </div>
+    <div class="menu-cta-wrap">
+      <p class="menu-note">This is a highlights selection. Full menu available at the restaurant.</p>
+      <a href="https://wa.me/919830365136?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20the%20full%20menu%20at%20Amantran%20Dhaba" target="_blank" class="btn-primary">Ask Full Menu on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ EXPERIENCE STRIP ═══════════════════════════════ -->
+<div class="exp-strip">
+  <div class="exp-track">
+    <span>🍛 Bengali Thali</span>
+    <span class="exp-dot">·</span>
+    <span>🔥 Tandoor Kabab</span>
+    <span class="exp-dot">·</span>
+    <span>🍗 Chicken Biryani</span>
+    <span class="exp-dot">·</span>
+    <span>🌿 Outdoor Seating</span>
+    <span class="exp-dot">·</span>
+    <span>⭐ 4.1 Google Rating</span>
+    <span class="exp-dot">·</span>
+    <span>🛵 Roadside Collection</span>
+    <span class="exp-dot">·</span>
+    <span>🍜 Sezwan Noodles</span>
+    <span class="exp-dot">·</span>
+    <span>🐟 Fish Tikka</span>
+    <span class="exp-dot">·</span>
+    <span>🍛 Bengali Thali</span>
+    <span class="exp-dot">·</span>
+    <span>🔥 Tandoor Kabab</span>
+    <span class="exp-dot">·</span>
+    <span>🍗 Chicken Biryani</span>
+    <span class="exp-dot">·</span>
+    <span>🌿 Outdoor Seating</span>
+    <span class="exp-dot">·</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ REVIEWS ═══════════════════════════════ -->
+<section id="reviews" class="reviews-section">
+  <div class="reviews-container">
+    <div class="section-label center">What Guests Say</div>
+    <h2 class="section-heading center">Real Words,<br><em>Real People</em></h2>
+    <div class="rating-overview" data-reveal>
+      <div class="ro-score">
+        <span class="ro-num">4.1</span>
+        <div class="ro-stars">★★★★☆</div>
+        <span class="ro-count">1,985 Google Reviews</span>
+      </div>
+      <div class="ro-bars">
+        <div class="ro-bar-row"><span>5★</span><div class="ro-bar-track"><div class="ro-bar-fill" style="--w:72%"></div></div></div>
+        <div class="ro-bar-row"><span>4★</span><div class="ro-bar-track"><div class="ro-bar-fill" style="--w:55%"></div></div></div>
+        <div class="ro-bar-row"><span>3★</span><div class="ro-bar-track"><div class="ro-bar-fill" style="--w:28%"></div></div></div>
+        <div class="ro-bar-row"><span>2★</span><div class="ro-bar-track"><div class="ro-bar-fill" style="--w:10%"></div></div></div>
+        <div class="ro-bar-row"><span>1★</span><div class="ro-bar-track"><div class="ro-bar-fill" style="--w:6%"></div></div></div>
+      </div>
+    </div>
+    <div class="swiper reviews-swiper" data-reveal>
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="review-card">
+            <div class="rc-top">
+              <div class="rc-avatar">RK</div>
+              <div class="rc-meta">
+                <strong>Rahul K.</strong>
+                <div class="rc-stars">★★★★★</div>
+              </div>
+              <div class="rc-source">
+                <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              </div>
+            </div>
+            <p class="rc-text">"So tasty food, good quality and quantity is also good and the service is fine. Will definitely come again!"</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="review-card">
+            <div class="rc-top">
+              <div class="rc-avatar">SM</div>
+              <div class="rc-meta">
+                <strong>Subham M.</strong>
+                <div class="rc-stars">★★★★★</div>
+              </div>
+              <div class="rc-source">
+                <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              </div>
+            </div>
+            <p class="rc-text">"The variety of foods and friendly ambiance make it a perfect place for hangout. Staff is very cooperative!"</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="review-card">
+            <div class="rc-top">
+              <div class="rc-avatar">PD</div>
+              <div class="rc-meta">
+                <strong>Priya D.</strong>
+                <div class="rc-stars">★★★★★</div>
+              </div>
+              <div class="rc-source">
+                <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              </div>
+            </div>
+            <p class="rc-text">"Atmosphere and the main thing is staff behaviour — awesome! Food is very fresh and the biryani here is next level."</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="review-card">
+            <div class="rc-top">
+              <div class="rc-avatar">AB</div>
+              <div class="rc-meta">
+                <strong>Aryan B.</strong>
+                <div class="rc-stars">★★★★☆</div>
+              </div>
+              <div class="rc-source">
+                <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              </div>
+            </div>
+            <p class="rc-text">"Roadside dhaba with premium taste! Bengali Thali is unbeatable value. The outdoor seating gives such a great vibe."</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="review-card">
+            <div class="rc-top">
+              <div class="rc-avatar">NC</div>
+              <div class="rc-meta">
+                <strong>Niloy C.</strong>
+                <div class="rc-stars">★★★★★</div>
+              </div>
+              <div class="rc-source">
+                <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              </div>
+            </div>
+            <p class="rc-text">"Malai cha is famous here for a reason! Great place to come with family. Food is generous, tasty and affordable."</p>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination reviews-pagination"></div>
+      <div class="swiper-button-prev reviews-prev"></div>
+      <div class="swiper-button-next reviews-next"></div>
+    </div>
+    <div class="review-cta-wrap">
+      <a href="https://maps.google.com/?q=Amantran+Dhaba+Barasat" target="_blank" class="btn-outline">Write a Google Review</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ CONTACT ═══════════════════════════════ -->
+<section id="contact" class="contact-section">
+  <div class="contact-container">
+    <div class="contact-info" data-reveal>
+      <div class="section-label">Find Us</div>
+      <h2 class="section-heading">Come, <em>You're Invited</em></h2>
+      <div class="ci-items">
+        <div class="ci-item">
+          <div class="ci-icon">📍</div>
+          <div class="ci-text">
+            <strong>Address</strong>
+            <span>Moinagadi, Noapara, 5, Krishnanagar Rd,<br>Barasat, Kolkata, West Bengal 700125</span>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">📞</div>
+          <div class="ci-text">
+            <strong>Phone</strong>
+            <a href="tel:09830365136">09830365136</a>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">🕐</div>
+          <div class="ci-text">
+            <strong>Hours</strong>
+            <span>Open Daily · Until 11:55 PM</span>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">✉️</div>
+          <div class="ci-text">
+            <strong>Email</strong>
+            <a href="mailto:xeokittu@gmail.com">xeokittu@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="contact-action-btns">
+        <a href="tel:09830365136" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.13a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .4h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Call Now
+        </a>
+        <a href="https://wa.me/919830365136?text=Hi%2C%20I%20want%20to%20book%20a%20table%20at%20Amantran%20Dhaba" target="_blank" class="btn-wa">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="contact-form-wrap" data-reveal>
+      <div class="contact-form-card">
+        <h3 class="form-title">Book a Table</h3>
+        <p class="form-sub">Fill the form — we'll confirm via WhatsApp or call.</p>
+        <form id="bookingForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Your Name *</label>
+              <input type="text" id="fname" name="name" placeholder="Rahul Das" required>
+            </div>
+            <div class="form-group">
+              <label for="fphone">Phone Number *</label>
+              <input type="tel" id="fphone" name="phone" placeholder="98XXXXXXXX" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fdate">Date</label>
+              <input type="date" id="fdate" name="date">
+            </div>
+            <div class="form-group">
+              <label for="fguests">No. of Guests</label>
+              <select id="fguests" name="guests">
+                <option value="">Select</option>
+                <option>1–2</option>
+                <option>3–5</option>
+                <option>6–10</option>
+                <option>10+</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group full">
+            <label for="fmsg">Special Request</label>
+            <textarea id="fmsg" name="message" rows="3" placeholder="E.g. birthday celebration, dietary needs..."></textarea>
+          </div>
+          <button type="submit" class="btn-form-submit">
+            <span class="btn-text">Send Booking Request</span>
+            <span class="btn-icon">→</span>
+          </button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="fs-icon">✓</div>
+          <strong>Received!</strong>
+          <p>We'll contact you shortly to confirm your booking.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <img src="logo.jpg" alt="Amantran Dhaba" class="footer-logo">
+      <div class="footer-brand-text">
+        <span class="footer-bengali">আমন্ত্রণ</span>
+        <span class="footer-sub">Dhaba</span>
+      </div>
+    </div>
+    <div class="footer-tagline">An Invitation to Flavour</div>
+    <div class="footer-links">
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-contact-line">
+      <a href="tel:09830365136">📞 09830365136</a>
+      <span>·</span>
+      <a href="mailto:xeokittu@gmail.com">✉ xeokittu@gmail.com</a>
+      <span>·</span>
+      <span>📍 Moinagadi, Barasat</span>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Amantran Dhaba · All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/919830365136?text=Hi%2C%20I%27m%20interested%20in%20Amantran%20Dhaba" target="_blank" class="whatsapp-fab" id="waFab" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+  <span class="wa-tooltip">Chat on WhatsApp</span>
+</a>
+
+<script src="./js/app.js"></script>
+</body>
+</html>
