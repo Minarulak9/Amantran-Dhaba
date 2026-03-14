@@ -469,6 +469,7 @@ ul{list-style:none}
     z-index:9100;
     overflow-y:auto;
     box-shadow:-8px 0 40px rgba(0,0,0,.18);
+    height: fit-content;
   }
   .nav-menu.open{transform:translateX(0)}
   .mob-overlay{display:block}
