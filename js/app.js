@@ -1,517 +1,353 @@
-/* ═══════════════════════════════════════════════════════════════
-   AMANTRAN DHABA — main.js
-   GSAP + Swiper + Custom Animations
-═══════════════════════════════════════════════════════════════ */
+/* ════════════════════════════════════════════════════════════
+   AMANTRAN DHABA — app.js
+   Clean, professional JS — no gimmicks, no bad UX
+════════════════════════════════════════════════════════════ */
 
-'use strict';
+/* ── Init Lucide Icons ──────────────────── */
+lucide.createIcons();
 
-// ── GSAP Plugin Registration ─────────────────────────────────
-gsap.registerPlugin(ScrollTrigger);
-
-/* ═══════════════════ PRELOADER ═══════════════════════════════ */
-(function initPreloader() {
-  const preloader = document.getElementById('preloader');
-  if (!preloader) return;
-
-  // Minimum display time: 2.4s
-  const minTime = 2400;
-  const start = Date.now();
-
-  window.addEventListener('load', () => {
-    const elapsed = Date.now() - start;
-    const remaining = Math.max(0, minTime - elapsed);
-
-    setTimeout(() => {
-      gsap.to(preloader, {
-        yPercent: -100,
-        duration: 0.9,
-        ease: 'power3.inOut',
-        onComplete: () => {
-          preloader.style.display = 'none';
-          document.body.style.overflow = '';
-          // Start hero animations after preloader leaves
-          animateHeroEntrance();
-        }
-      });
-    }, remaining);
+/* ════════════ PRELOADER ════════════ */
+(function(){
+  const loader = document.getElementById('preloader');
+  if(!loader) return;
+  window.addEventListener('load', ()=>{
+    setTimeout(()=>{
+      loader.style.opacity = '0';
+      loader.style.transition = 'opacity .5s ease';
+      setTimeout(()=>{ loader.style.display='none'; initAll(); }, 500);
+    }, 1200);
   });
-
-  // Lock scroll during preloader
-  document.body.style.overflow = 'hidden';
+  // fallback
+  setTimeout(()=>{
+    if(loader.style.display!=='none'){
+      loader.style.opacity='0';
+      loader.style.transition='opacity .5s ease';
+      setTimeout(()=>{ loader.style.display='none'; initAll(); },500);
+    }
+  },3500);
 })();
 
-/* ═══════════════════ HERO ENTRANCE ══════════════════════════ */
-function animateHeroEntrance() {
-  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+function initAll(){
+  initSmoothScroll();
+  initNavbar();
+  initMobileMenu();
+  initNavHighlight();
+  initMenuTabs();
+  initReviewsSwiper();
+  initScrollAnimations();
+  initRatingBars();
+  initBookingForm();
+  initTypewriter();
+}
 
-  tl.from('.hero-eyebrow', { y: 30, opacity: 0, duration: 0.7 })
-    .from('.hero-bengali', { y: 60, opacity: 0, duration: 0.9, clipPath: 'inset(100% 0 0 0)' }, '-=0.3')
-    .from('.hero-sub-title', { y: 20, opacity: 0, duration: 0.6 }, '-=0.5')
-    .from('.hero-desc', { y: 20, opacity: 0, duration: 0.6 }, '-=0.4')
-    .from('.badge', { y: 16, opacity: 0, duration: 0.5, stagger: 0.1 }, '-=0.3')
-    .from('.hero-ctas > *', { y: 20, opacity: 0, duration: 0.5, stagger: 0.12 }, '-=0.3')
-    .from('.hero-scroll-hint', { opacity: 0, duration: 0.6 }, '-=0.1');
+/* ════════════ SMOOTH SCROLL ════════════ */
+function initSmoothScroll(){
+  const NAV_H = 70; // match navbar height
 
-  // Parallax decorative blobs
-  gsap.to('.hero-deco--1', {
-    yPercent: -40,
-    ease: 'none',
-    scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1.5 }
-  });
-  gsap.to('.hero-deco--2', {
-    yPercent: -20,
-    ease: 'none',
-    scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 2 }
+  document.querySelectorAll('a[href^="#"]').forEach(link=>{
+    link.addEventListener('click', e=>{
+      const id = link.getAttribute('href');
+      if(!id || id==='#') return;
+      const target = document.querySelector(id);
+      if(!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - NAV_H;
+      window.scrollTo({ top, behavior:'smooth' });
+    });
   });
 }
 
-/* ═══════════════════ NAVBAR ══════════════════════════════════ */
-(function initNavbar() {
-  const navbar = document.getElementById('navbar');
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
+/* ════════════ NAVBAR ════════════ */
+function initNavbar(){
+  const nav = document.getElementById('navbar');
+  if(!nav) return;
+  const onScroll = ()=>{
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+}
 
-  // Scroll state
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 60) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-    updateActiveLink();
-  }, { passive: true });
+/* ════════════ MOBILE MENU ════════════ */
+function initMobileMenu(){
+  const burger = document.getElementById('burger');
+  const menu   = document.getElementById('navMenu');
+  if(!burger||!menu) return;
 
-  // Hamburger toggle
-  hamburger.addEventListener('click', () => {
-    const isOpen = navLinks.classList.toggle('open');
-    hamburger.classList.toggle('open', isOpen);
-    hamburger.setAttribute('aria-expanded', isOpen);
+  burger.addEventListener('click', ()=>{
+    const isOpen = menu.classList.toggle('open');
+    burger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
-  // Close menu on link click
-  navLinks.querySelectorAll('[data-close]').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      hamburger.classList.remove('open');
+  menu.querySelectorAll('.nav-link').forEach(link=>{
+    link.addEventListener('click', ()=>{
+      menu.classList.remove('open');
+      burger.classList.remove('open');
+      document.body.style.overflow = '';
     });
   });
 
-  // Close menu on outside click
-  document.addEventListener('click', (e) => {
-    if (!navbar.contains(e.target)) {
-      navLinks.classList.remove('open');
-      hamburger.classList.remove('open');
+  document.addEventListener('keydown', e=>{
+    if(e.key==='Escape' && menu.classList.contains('open')){
+      menu.classList.remove('open');
+      burger.classList.remove('open');
+      document.body.style.overflow='';
     }
   });
+}
 
-  // Active link tracking
-  function updateActiveLink() {
-    const sections = document.querySelectorAll('section[id]');
-    const scrollPos = window.scrollY + 120;
-    sections.forEach(section => {
-      const top = section.offsetTop;
-      const bottom = top + section.offsetHeight;
-      const link = navLinks.querySelector(`[href="#${section.id}"]`);
-      if (link) {
-        link.classList.toggle('active', scrollPos >= top && scrollPos < bottom);
+/* ════════════ NAV HIGHLIGHT ════════════ */
+function initNavHighlight(){
+  const sections = document.querySelectorAll('section[id], header[id]');
+  const links    = document.querySelectorAll('.nav-link[data-nav]');
+  if(!sections.length||!links.length) return;
+
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        links.forEach(l=>l.classList.remove('active'));
+        const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+        if(active) active.classList.add('active');
+      }
+    });
+  }, {rootMargin:'-40% 0px -55% 0px'});
+
+  sections.forEach(s=>io.observe(s));
+}
+
+/* ════════════ MENU TABS ════════════ */
+function initMenuTabs(){
+  const tabs   = document.querySelectorAll('.mtab');
+  const cards  = document.querySelectorAll('.mcard');
+  const scroll = document.getElementById('mtScroll');
+  const btnL   = document.getElementById('mtL');
+  const btnR   = document.getElementById('mtR');
+
+  if(!tabs.length) return;
+
+  function filterMenu(cat){
+    cards.forEach(c=>{
+      const show = cat==='all' || c.dataset.cat===cat;
+      if(show){
+        c.style.display='';
+        c.style.animation='mfadeUp .35s ease forwards';
+      } else {
+        c.style.display='none';
       }
     });
   }
-})();
 
-/* ═══════════════════ SCROLL REVEAL ══════════════════════════ */
-(function initReveal() {
-  const revealEls = document.querySelectorAll('[data-reveal]');
-  if (!revealEls.length) return;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        const delay = entry.target.dataset.delay || 0;
-        setTimeout(() => {
-          entry.target.classList.add('revealed');
-        }, delay * 1000);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
-  revealEls.forEach((el, i) => {
-    el.dataset.delay = i * 0.12;
-    observer.observe(el);
-  });
-})();
-
-/* ═══════════════════ ABOUT SECTION ══════════════════════════ */
-(function initAboutAnimations() {
-  gsap.from('.about-img-frame', {
-    x: -60,
-    opacity: 0,
-    duration: 1,
-    ease: 'power3.out',
-    scrollTrigger: {
-      trigger: '.about-section',
-      start: 'top 70%',
-    }
-  });
-  gsap.from('.about-text > *', {
-    y: 40,
-    opacity: 0,
-    duration: 0.7,
-    stagger: 0.12,
-    ease: 'power3.out',
-    scrollTrigger: {
-      trigger: '.about-section',
-      start: 'top 65%',
-    }
-  });
-  gsap.from('.about-floating-card', {
-    scale: 0.6,
-    opacity: 0,
-    duration: 0.6,
-    ease: 'back.out(1.7)',
-    delay: 0.4,
-    scrollTrigger: {
-      trigger: '.about-section',
-      start: 'top 70%',
-    }
-  });
-  gsap.from('.about-img-badge', {
-    scale: 0.6,
-    opacity: 0,
-    duration: 0.6,
-    ease: 'back.out(1.7)',
-    delay: 0.6,
-    scrollTrigger: {
-      trigger: '.about-section',
-      start: 'top 70%',
-    }
-  });
-
-  // Stats count-up
-  const statNums = document.querySelectorAll('.stat-num');
-  statNums.forEach(el => {
-    const txt = el.textContent.trim();
-    // Only animate purely numeric values
-    const num = parseFloat(txt.replace(/[^0-9.]/g, ''));
-    const prefix = txt.match(/^[^0-9]*/)[0];
-    const suffix = txt.match(/[^0-9.]*$/)[0];
-    if (isNaN(num)) return;
-
-    ScrollTrigger.create({
-      trigger: el,
-      start: 'top 85%',
-      once: true,
-      onEnter: () => {
-        gsap.fromTo({ val: 0 }, { val: num }, {
-          duration: 1.5,
-          ease: 'power2.out',
-          onUpdate: function() {
-            el.textContent = prefix + (Number.isInteger(num)
-              ? Math.round(this.targets()[0].val)
-              : this.targets()[0].val.toFixed(0)) + suffix;
-          }
-        });
-      }
-    });
-  });
-})();
-
-/* ═══════════════════ MENU FILTER ════════════════════════════ */
-(function initMenuFilter() {
-  const tabs = document.querySelectorAll('.menu-tab');
-  const cards = document.querySelectorAll('.menu-card');
-  if (!tabs.length) return;
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
+  tabs.forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      tabs.forEach(t=>t.classList.remove('active'));
       tab.classList.add('active');
+      filterMenu(tab.dataset.cat);
+      tab.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+    });
+  });
 
-      const cat = tab.dataset.cat;
-      let delay = 0;
+  if(btnL && scroll) btnL.addEventListener('click',()=>scroll.scrollBy({left:-160,behavior:'smooth'}));
+  if(btnR && scroll) btnR.addEventListener('click',()=>scroll.scrollBy({left:160,behavior:'smooth'}));
 
-      cards.forEach(card => {
-        const match = cat === 'all' || card.dataset.cat === cat;
-        if (match) {
-          card.style.display = '';
-          gsap.fromTo(card,
-            { opacity: 0, y: 20, scale: 0.96 },
-            { opacity: 1, y: 0, scale: 1, duration: 0.4, delay: delay * 0.05, ease: 'power2.out' }
-          );
-          delay++;
-        } else {
-          gsap.to(card, {
-            opacity: 0, y: -10, scale: 0.95, duration: 0.25,
-            onComplete: () => { card.style.display = 'none'; }
-          });
-        }
+  if(scroll && btnL && btnR){
+    const checkOverflow = ()=>{
+      const over = scroll.scrollWidth > scroll.clientWidth + 4;
+      btnL.style.display = over ? 'flex' : 'none';
+      btnR.style.display = over ? 'flex' : 'none';
+    };
+    checkOverflow();
+    window.addEventListener('resize', checkOverflow, {passive:true});
+  }
+}
+
+/* ════════════ REVIEWS SWIPER ════════════ */
+function initReviewsSwiper(){
+  if(typeof Swiper === 'undefined') return;
+  new Swiper('.rev-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 18,
+    loop: true,
+    autoplay:{ delay:4500, disableOnInteraction:false, pauseOnMouseEnter:true },
+    pagination:{ el:'.rev-dots', clickable:true },
+    navigation:{ prevEl:'.rev-prev', nextEl:'.rev-next' },
+    breakpoints:{
+      640:{ slidesPerView:2 },
+      1024:{ slidesPerView:3 }
+    }
+  });
+}
+
+/* ════════════ SCROLL ANIMATIONS ════════════ */
+function initScrollAnimations(){
+  if(typeof gsap === 'undefined') return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Hero entrance
+  const tl = gsap.timeline({delay:.1});
+  tl.from('.hero-tag',     {y:18,opacity:0,duration:.6,ease:'power2.out'})
+    .from('.hero-bengali', {y:32,opacity:0,duration:.8,ease:'power3.out'},'-=.3')
+    .from('.hero-eng',     {y:16,opacity:0,duration:.6,ease:'power2.out'},'-=.4')
+    .from('.hero-p',       {y:14,opacity:0,duration:.6,ease:'power2.out'},'-=.35')
+    .from('.hero-pills .pill',{y:10,opacity:0,duration:.5,stagger:.08,ease:'power2.out'},'-=.35')
+    .from('.hero-btns .btn',  {y:10,opacity:0,duration:.5,stagger:.1, ease:'power2.out'},'-=.35');
+
+  // Section reveals
+  const revealGroups = [
+    '.act-card','.about-left','.about-right',
+    '.spec-card','.why-card','.mcard',
+    '.gal-card','.ci','.form-card'
+  ];
+
+  revealGroups.forEach(sel=>{
+    gsap.utils.toArray(sel).forEach((el,i)=>{
+      gsap.from(el,{
+        scrollTrigger:{ trigger:el, start:'top 88%', once:true },
+        y:28, opacity:0, duration:.55, delay:i*0.05, ease:'power2.out'
       });
     });
   });
 
-  // Entrance animation
-  gsap.from('.menu-card', {
-    y: 40,
-    opacity: 0,
-    duration: 0.6,
-    stagger: 0.06,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: '.menu-grid',
-      start: 'top 80%',
-    }
+  // Headings + labels
+  document.querySelectorAll('.sec-h2,.tag-line,.sec-sub,.about-stats,.about-tags').forEach(el=>{
+    gsap.from(el,{
+      scrollTrigger:{ trigger:el, start:'top 90%', once:true },
+      y:20, opacity:0, duration:.6, ease:'power2.out'
+    });
   });
-})();
 
-/* ═══════════════════ REVIEWS SWIPER ════════════════════════ */
-(function initSwiper() {
-  const swiperEl = document.querySelector('.reviews-swiper');
-  if (!swiperEl) return;
+  // Rating box
+  const ratingBox = document.querySelector('.rating-box');
+  if(ratingBox){
+    gsap.from(ratingBox,{
+      scrollTrigger:{ trigger:ratingBox, start:'top 85%', once:true },
+      y:24, opacity:0, duration:.7, ease:'power2.out'
+    });
+  }
+}
 
-  new Swiper('.reviews-swiper', {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    loop: true,
-    autoplay: {
-      delay: 4500,
-      disableOnInteraction: false,
-      pauseOnMouseEnter: true,
-    },
-    pagination: {
-      el: '.reviews-pagination',
-      clickable: true,
-    },
-    navigation: {
-      prevEl: '.reviews-prev',
-      nextEl: '.reviews-next',
-    },
-    breakpoints: {
-      640: { slidesPerView: 2 },
-      960: { slidesPerView: 3 },
-    }
-  });
-})();
+/* ════════════ RATING BARS ════════════ */
+function initRatingBars(){
+  const fills = document.querySelectorAll('.bar-fill');
+  if(!fills.length) return;
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('on');
+        io.unobserve(entry.target);
+      }
+    });
+  },{threshold:.3});
+  fills.forEach(f=>io.observe(f));
+}
 
-/* ═══════════════════ RATING BARS ANIMATION ═════════════════ */
-(function initRatingBars() {
-  const fills = document.querySelectorAll('.ro-bar-fill');
-  if (!fills.length) return;
+/* ════════════ BOOKING FORM ════════════ */
+function initBookingForm(){
+  const form   = document.getElementById('bookingForm');
+  const formOk = document.getElementById('formOk');
+  if(!form) return;
 
-  ScrollTrigger.create({
-    trigger: '.rating-overview',
-    start: 'top 75%',
-    once: true,
-    onEnter: () => {
-      fills.forEach((fill, i) => {
-        setTimeout(() => fill.classList.add('animated'), i * 120);
-      });
-    }
-  });
-})();
+  // Set min date to today
+  const dateInput = document.getElementById('fd');
+  if(dateInput){
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+  }
 
-/* ═══════════════════ CONTACT FORM ══════════════════════════ */
-(function initForm() {
-  const form = document.getElementById('bookingForm');
-  const success = document.getElementById('formSuccess');
-  if (!form) return;
-
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', e=>{
     e.preventDefault();
+    const nameEl  = document.getElementById('fn');
+    const phoneEl = document.getElementById('fp');
+    let valid = true;
 
-    // Basic validation
-    const name = form.querySelector('#fname').value.trim();
-    const phone = form.querySelector('#fphone').value.trim();
+    [nameEl, phoneEl].forEach(f=>{
+      if(!f) return;
+      if(!f.value.trim()){
+        f.style.borderColor = 'var(--terra)';
+        f.style.boxShadow   = '0 0 0 3px rgba(176,74,26,.1)';
+        valid = false;
+        f.addEventListener('input',()=>{
+          f.style.borderColor='';
+          f.style.boxShadow='';
+        },{once:true});
+      }
+    });
+    if(!valid) return;
 
-    if (!name || !phone) {
-      shakeField(!name ? '#fname' : '#fphone');
-      return;
-    }
+    const nm = nameEl.value.trim();
+    const ph = phoneEl.value.trim();
+    const dt = document.getElementById('fd')?.value || '';
+    const gs = document.getElementById('fg')?.value || '';
+    const ms = document.getElementById('fm')?.value?.trim() || '';
 
-    // Build WhatsApp message
-    const date = form.querySelector('#fdate').value;
-    const guests = form.querySelector('#fguests').value;
-    const msg = form.querySelector('#fmsg').value.trim();
-
-    const waText = encodeURIComponent(
-      `Hi! I'd like to book a table at Amantran Dhaba.\n\n` +
-      `Name: ${name}\nPhone: ${phone}` +
-      (date ? `\nDate: ${date}` : '') +
-      (guests ? `\nGuests: ${guests}` : '') +
-      (msg ? `\nNote: ${msg}` : '')
+    const msg = encodeURIComponent(
+      `Hi, I'd like to book a table at Amantran Dhaba!\n\nName: ${nm}\nPhone: ${ph}`
+      + (dt ? `\nDate: ${dt}` : '')
+      + (gs ? `\nGuests: ${gs}` : '')
+      + (ms ? `\nRequest: ${ms}` : '')
     );
 
-    // Animate button
-    const btn = form.querySelector('.btn-form-submit');
-    gsap.to(btn, { scale: 0.97, duration: 0.1, yoyo: true, repeat: 1 });
-
-    setTimeout(() => {
-      // Show success
-      gsap.to(form, {
-        opacity: 0, y: -20, duration: 0.4,
-        onComplete: () => {
-          form.style.display = 'none';
-          success.classList.add('show');
-          gsap.from(success, { opacity: 0, y: 20, duration: 0.5 });
-        }
-      });
-
-      // Open WhatsApp
-      window.open(`https://wa.me/919830365136?text=${waText}`, '_blank');
-    }, 400);
-  });
-
-  function shakeField(selector) {
-    const el = form.querySelector(selector);
-    if (!el) return;
-    el.focus();
-    gsap.fromTo(el, { x: -8 }, { x: 0, duration: 0.4, ease: 'elastic.out(1, 0.3)' });
-    el.style.borderColor = '#e55';
-    setTimeout(() => { el.style.borderColor = ''; }, 1500);
-  }
-})();
-
-/* ═══════════════════ SMOOTH ANCHOR ════════════════════════ */
-(function initSmoothAnchors() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
-      const target = document.querySelector(anchor.getAttribute('href'));
-      if (!target) return;
-      e.preventDefault();
-      const navH = document.getElementById('navbar')?.offsetHeight || 72;
-      const top = target.getBoundingClientRect().top + window.scrollY - navH;
-      window.scrollTo({ top, behavior: 'smooth' });
-    });
-  });
-})();
-
-/* ═══════════════════ SECTION ENTRANCE GSAP ════════════════ */
-(function initSectionAnimations() {
-  // Menu section heading
-  gsap.from('.menu-section .section-label, .menu-section .section-heading', {
-    y: 40,
-    opacity: 0,
-    duration: 0.8,
-    stagger: 0.15,
-    ease: 'power2.out',
-    scrollTrigger: { trigger: '.menu-section', start: 'top 75%' }
-  });
-
-  // Reviews section heading
-  gsap.from('.reviews-section .section-label, .reviews-section .section-heading', {
-    y: 40,
-    opacity: 0,
-    duration: 0.8,
-    stagger: 0.15,
-    ease: 'power2.out',
-    scrollTrigger: { trigger: '.reviews-section', start: 'top 75%' }
-  });
-
-  // Quick actions stagger
-  gsap.from('.qa-card', {
-    y: 30,
-    opacity: 0,
-    duration: 0.5,
-    stagger: 0.1,
-    ease: 'power2.out',
-    scrollTrigger: { trigger: '.quick-actions', start: 'top 85%' }
-  });
-
-  // Contact section
-  gsap.from('.contact-info > *', {
-    y: 30,
-    opacity: 0,
-    duration: 0.6,
-    stagger: 0.12,
-    ease: 'power2.out',
-    scrollTrigger: { trigger: '.contact-section', start: 'top 70%' }
-  });
-  gsap.from('.contact-form-card', {
-    x: 40,
-    opacity: 0,
-    duration: 0.8,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.contact-section', start: 'top 70%' }
-  });
-})();
-
-/* ═══════════════════ CURSOR DOT (desktop) ══════════════════ */
-(function initCursorDot() {
-  if (window.matchMedia('(pointer: coarse)').matches) return; // Skip on touch
-
-  const dot = document.createElement('div');
-  dot.style.cssText = `
-    position: fixed;
-    pointer-events: none;
-    z-index: 9998;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(201,148,58,0.8);
-    transform: translate(-50%,-50%);
-    transition: transform 0.1s, opacity 0.3s, background 0.2s;
-    mix-blend-mode: difference;
-  `;
-  const ring = document.createElement('div');
-  ring.style.cssText = `
-    position: fixed;
-    pointer-events: none;
-    z-index: 9997;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(201,148,58,0.5);
-    transform: translate(-50%,-50%);
-    transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), width 0.25s, height 0.25s, opacity 0.3s;
-  `;
-  document.body.appendChild(dot);
-  document.body.appendChild(ring);
-
-  let mx = -100, my = -100;
-  let rx = -100, ry = -100;
-
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    dot.style.left = mx + 'px';
-    dot.style.top = my + 'px';
-    // Ring follows with slight lag via rAF
-  });
-
-  // Interactive elements scale ring up
-  document.querySelectorAll('a, button, .menu-card, .review-card').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      ring.style.width = '56px';
-      ring.style.height = '56px';
-      ring.style.borderColor = 'rgba(196,98,45,0.7)';
-    });
-    el.addEventListener('mouseleave', () => {
-      ring.style.width = '32px';
-      ring.style.height = '32px';
-      ring.style.borderColor = 'rgba(201,148,58,0.5)';
-    });
-  });
-
-  // Smooth ring follow
-  function followRing() {
-    rx += (mx - rx) * 0.18;
-    ry += (my - ry) * 0.18;
-    ring.style.left = rx + 'px';
-    ring.style.top = ry + 'px';
-    requestAnimationFrame(followRing);
-  }
-  followRing();
-})();
-
-/* ═══════════════════ PARALLAX HERO TEXT ════════════════════ */
-(function initHeroParallax() {
-  gsap.to('.hero-content', {
-    yPercent: 35,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '#hero',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: 1,
+    form.style.display = 'none';
+    if(formOk){
+      formOk.classList.add('show');
+      lucide.createIcons();
     }
+
+    setTimeout(()=>{
+      window.open(`https://wa.me/919830365136?text=${msg}`, '_blank');
+    }, 800);
   });
-})();
+}
+
+/* ════════════ TYPEWRITER ════════════ */
+function initTypewriter(){
+  const el = document.getElementById('htwText');
+  if(!el) return;
+
+  const items = [
+    'Bengali Thali  ·  ₹350',
+    'Chicken Biryani  ·  ₹220',
+    'Fish Tikka Kabab  ·  ₹380',
+    'Malai Cha  ·  ₹30',
+    'Chicken Tikka Kabab  ·  ₹220',
+    'Mutton Biryani  ·  ₹320',
+    'Chilly Paneer  ·  ₹200',
+  ];
+
+  let itemIdx = 0, charIdx = 0, deleting = false;
+  const PAUSE_END   = 1800;  // pause after full word
+  const PAUSE_START = 380;   // pause before typing next
+  const TYPE_SPEED  = 68;
+  const DEL_SPEED   = 32;
+
+  function tick(){
+    const current = items[itemIdx];
+    if(!deleting){
+      el.textContent = current.slice(0, charIdx + 1);
+      charIdx++;
+      if(charIdx === current.length){
+        deleting = true;
+        setTimeout(tick, PAUSE_END);
+        return;
+      }
+      setTimeout(tick, TYPE_SPEED);
+    } else {
+      el.textContent = current.slice(0, charIdx - 1);
+      charIdx--;
+      if(charIdx === 0){
+        deleting = false;
+        itemIdx = (itemIdx + 1) % items.length;
+        setTimeout(tick, PAUSE_START);
+        return;
+      }
+      setTimeout(tick, DEL_SPEED);
+    }
+  }
+  setTimeout(tick, 900);
+}
+
+/* ════════════ Menu filter keyframe ════════════ */
+const _s = document.createElement('style');
+_s.textContent = `@keyframes mfadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}`;
+document.head.appendChild(_s);

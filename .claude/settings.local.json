@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -sL \"https://placehold.co/1920x1080/2d5a27/f5f0e8?text=Hero+Background&font=playfair-display\" -o hero-bg.jpg)",
+      "Bash(curl -sL \"https://placehold.co/800x600/f3ede2/2d5a27?text=Restaurant+Interior&font=playfair-display\" -o about.jpg)",
+      "Bash(curl -sL \"https://placehold.co/600x400/ede6d8/8a7a2a?text=Bengali+Thali&font=playfair-display\" -o dish-thali.jpg)",
+      "Bash(curl -sL \"https://placehold.co/600x400/ede6d8/b04a1a?text=Chicken+Biryani&font=playfair-display\" -o dish-biryani.jpg)",
+      "Bash(curl -sL \"https://placehold.co/600x400/ede6d8/3d7a35?text=Chicken+Tikka&font=playfair-display\" -o dish-tikka.jpg)",
+      "Bash(curl -sL \"https://placehold.co/600x400/ede6d8/8a7a2a?text=Fish+Tikka&font=playfair-display\" -o dish-fish.jpg)",
+      "Bash(curl -sL \"https://placehold.co/600x400/ede6d8/b04a1a?text=Malai+Cha&font=playfair-display\" -o dish-cha.jpg)",
+      "Bash(curl -sL \"https://placehold.co/900x600/f3ede2/2d5a27?text=Outdoor+Dining&font=playfair-display\" -o gallery-outdoor.jpg)",
+      "Bash(curl -sL \"https://placehold.co/600x450/ede6d8/8a7a2a?text=Thali+Spread&font=playfair-display\" -o gallery-thali.jpg)",
+      "Bash(curl -sL \"https://placehold.co/600x450/ede6d8/b04a1a?text=Tandoor+Kitchen&font=playfair-display\" -o gallery-tandoor.jpg)",
+      "Bash(curl -sL \"https://placehold.co/600x450/f3ede2/3d7a35?text=Family+Dining&font=playfair-display\" -o gallery-family.jpg)",
+      "Bash(curl -sL \"https://placehold.co/900x600/2d5a27/f5f0e8?text=Evening+Ambiance&font=playfair-display\" -o gallery-evening.jpg)",
+      "Bash(rm -f hero-bg.jpg about.jpg dish-*.jpg gallery-*.jpg)",
+      "Bash(curl -sL \"https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=80\" -o hero-bg.jpg)",
+      "Bash(curl -sL \"https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&q=80\" -o about.jpg)",
+      "Bash(curl -sL \"https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80\" -o dish-thali.jpg)",
+      "Bash(curl -sL \"https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&q=80\" -o dish-biryani.jpg)",
+      "Bash(curl -sL \"https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80\" -o dish-tikka.jpg)",
+      "Bash(curl -sL \"https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=600&q=80\" -o dish-fish.jpg)",
+      "Bash(curl -sL \"https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80\" -o dish-tea.jpg)",
+      "Bash(curl -sL \"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80\" -o gallery-1.jpg)",
+      "Bash(curl -sL \"https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80\" -o gallery-2.jpg)",
+      "Bash(curl -sL \"https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600&q=80\" -o gallery-3.jpg)",
+      "Bash(curl -sL \"https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=80\" -o gallery-4.jpg)",
+      "Bash(curl -sL \"https://images.unsplash.com/photo-1559339352-11d035aa65de?w=900&q=80\" -o gallery-5.jpg)"
+    ]
+  }
+}
