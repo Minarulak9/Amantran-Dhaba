@@ -70,30 +70,39 @@ function initNavbar(){
 
 /* ════════════ MOBILE MENU ════════════ */
 function initMobileMenu(){
-  const burger = document.getElementById('burger');
-  const menu   = document.getElementById('navMenu');
+  const burger  = document.getElementById('burger');
+  const menu    = document.getElementById('navMenu');
+  const overlay = document.getElementById('mobOverlay');
+  const closeBtn= document.getElementById('mobClose');
   if(!burger||!menu) return;
 
+  function openMenu(){
+    menu.classList.add('open');
+    overlay?.classList.add('open');
+    burger.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lucide.createIcons(); // re-init icons for close btn
+  }
+  function closeMenu(){
+    menu.classList.remove('open');
+    overlay?.classList.remove('open');
+    burger.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
   burger.addEventListener('click', ()=>{
-    const isOpen = menu.classList.toggle('open');
-    burger.classList.toggle('open', isOpen);
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    menu.classList.contains('open') ? closeMenu() : openMenu();
   });
 
+  closeBtn?.addEventListener('click', closeMenu);
+  overlay?.addEventListener('click', closeMenu);
+
   menu.querySelectorAll('.nav-link').forEach(link=>{
-    link.addEventListener('click', ()=>{
-      menu.classList.remove('open');
-      burger.classList.remove('open');
-      document.body.style.overflow = '';
-    });
+    link.addEventListener('click', closeMenu);
   });
 
   document.addEventListener('keydown', e=>{
-    if(e.key==='Escape' && menu.classList.contains('open')){
-      menu.classList.remove('open');
-      burger.classList.remove('open');
-      document.body.style.overflow='';
-    }
+    if(e.key==='Escape') closeMenu();
   });
 }
 
@@ -229,17 +238,18 @@ function initScrollAnimations(){
 
 /* ════════════ RATING BARS ════════════ */
 function initRatingBars(){
-  const fills = document.querySelectorAll('.bar-fill');
-  if(!fills.length) return;
+  const tracks = document.querySelectorAll('.bar-track');
+  if(!tracks.length) return;
   const io = new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
       if(entry.isIntersecting){
-        entry.target.classList.add('on');
+        const fill = entry.target.querySelector('.bar-fill');
+        if(fill) fill.classList.add('on');
         io.unobserve(entry.target);
       }
     });
-  },{threshold:.3});
-  fills.forEach(f=>io.observe(f));
+  },{threshold:0.1});
+  tracks.forEach(t=>io.observe(t));
 }
 
 /* ════════════ BOOKING FORM ════════════ */
