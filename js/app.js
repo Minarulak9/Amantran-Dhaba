@@ -148,11 +148,16 @@ function initMenuTabs(){
   }
 
   tabs.forEach(tab=>{
-    tab.addEventListener('click', ()=>{
+    tab.addEventListener('click', (e)=>{
+      e.preventDefault();
+      e.stopPropagation();
       tabs.forEach(t=>t.classList.remove('active'));
       tab.classList.add('active');
       filterMenu(tab.dataset.cat);
-      tab.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+      if(scroll){
+        const scrollLeft = tab.offsetLeft - scroll.offsetWidth/2 + tab.offsetWidth/2;
+        scroll.scrollTo({left:scrollLeft,behavior:'smooth'});
+      }
     });
   });
 
